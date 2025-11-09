@@ -19,24 +19,89 @@ This project demonstrates a modern Single-Page Application (SPA) built with Reac
 
 https://dss3jdxg4usbj.cloudfront.net
 
-## 🖥️ Architecture (Mermaid Diagram)
+## Architecture (Mermaid Diagram)
 
 ```
-flowchart TD
-  A[React SPA<br/>(CloudFront / localhost)]
-  B[Auth0 PKCE + OIDC]
-  C[Auth0 Universal Login]
-  D[ID Token + Access Token]
-  E[Backend API<br/>(Local Express or AWS Lambda)]
-  F[jwtVerify via Auth0 JWKS (RS256)]
-  G[Protected Data → UI]
-
-  A --> B
-  B --> C
-  C --> D
-  D --> E
-  E --> F
-  F --> G
+React SPA
+     ↓
+Auth0 PKCE + OIDC
+     ↓
+Auth0 Universal Login
+     ↓
+ID Token + Access Token
+     ↓
+Backend API (Lambda or Express)
+     ↓
+JWT Verify (RS256, JWKS)
+     ↓
+Protected Data → UI
 
 ---
 
+## Quick Start — Local Run
+
+### 1) Backend (Protected API)
+```powershell
+cd backend
+npm install
+npm run dev
+
+API now live:
+http://localhost:4000/protected  
+
+2) Frontend (React App)
+cd frontend
+cp .env.example .env.local
+# Fill ONLY VITE_AUTH0_CLIENT_ID
+npm install
+npm run dev
+
+UI now live:
+http://localhost:5173
+
+Deploy to AWS
+Backend → AWS Lambda + API Gateway
+
+Copy the output API URL, then update:
+
+frontend/.env.local:
+VITE_API_BASE_URL=<YOUR_API_URL>
+
+Frontend → S3 + CloudFront
+
+App is now globally available
+
+Auth0 Configuration Checklist
+
+| Setting       | Value                               |
+| ------------- | ----------------------------------- |
+| Domain        | `dev-oo2oo6jk421zx72b.us.auth0.com` |
+| SPA Client ID | `BXHDNDjk2kuKkIkxf84OWcDoXCgdAKql`  |
+| API Audience  | `https://api.cruise0`               |
+| Algorithm     | RS256                               |
+
+Allowed URLs
+
+| Field                 | URLs to Add                              |
+| --------------------- | ---------------------------------------- |
+| Allowed Callback URLs | `http://localhost:5173` + https://dss3jdxg4usbj.cloudfront.net (CloudFront URL) |
+| Allowed Logout URLs   | `http://localhost:5173` + https://dss3jdxg4usbj.cloudfront.net (CloudFront URL) |
+| Allowed Web Origins   | `http://localhost:5173` + https://dss3jdxg4usbj.cloudfront.net (CloudFront URL) |
+
+Auth0 Actions Used
+
+| Action                    | Logic                                          |
+| ------------------------- | ---------------------------------------------- |
+| **Pre-User Registration** | Reject disposable emails                       |
+| **Post-Login**            | Require email verification                     |
+|                           | Enforce MFA for non-social users               |
+|                           | Add `country` to `user_metadata` via IP lookup |
+
+
+Feature Checks
+
+Login with Google → No MFA
+Login with email/password → MFA required
+Try login before verifying email → Login blocked
+Check user profile in Auth0 → country auto-populated
+Call protected API → Response only when email_verified = true
