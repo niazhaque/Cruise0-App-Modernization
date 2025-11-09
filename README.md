@@ -21,7 +21,8 @@ https://dss3jdxg4usbj.cloudfront.net
 
 ## 🖥️ Architecture (Mermaid Diagram)
 
-```mermaid
+```
+mermaid
 flowchart TD
 
 A[React SPA<br>(CloudFront / Localhost)] --> B[Auth0 PKCE + OIDC]
