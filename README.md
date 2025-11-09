@@ -21,19 +21,8 @@ https://dss3jdxg4usbj.cloudfront.net
 
 ## Architecture
 
-```mermaid
-flowchart TD
-  A["React SPA<br/>(CloudFront or Localhost)"]
-  B["Auth0 PKCE + OIDC"]
-  C["Auth0 Universal Login"]
-  D["ID Token + Access Token"]
-  E["Backend API<br/>(Local Express or AWS Lambda)"]
-  F["jwtVerify via Auth0 JWKS (RS256)"]
-  G["Protected Data → UI"]
+<img width="771" height="1041" alt="architecture flow Cruise0-App" src="https://github.com/user-attachments/assets/758db6cb-ab6c-4644-9653-4dc7fb53c27f" />
 
-  A --> B --> C --> D --> E --> F --> G
-
----
 
 ## Quick Start — Local Run
 
