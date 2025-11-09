@@ -15,21 +15,21 @@ This project demonstrates a modern Single-Page Application (SPA) built with Reac
 | **Protected Node API** | JWT validation + checks `email_verified === true` |
 
 ---
+## Cloudfront URL to access the Cruis0 Application - 
 
-## 🖥️ Architecture
+https://dss3jdxg4usbj.cloudfront.net
 
-React SPA (CloudFront / localhost)
-│ (Auth0 PKCE + OIDC)
-▼
-Auth0 Universal Login
-│
-│ (ID Token + Access Token)
-▼
-Backend API (Local Express or AWS Lambda)
-│
-(jwtVerify via Auth0 JWKS, RS256)
-│
-Protected Data → UI
+## 🖥️ Architecture (Mermaid Diagram)
+
+```mermaid
+flowchart TD
+
+A[React SPA<br>(CloudFront / Localhost)] --> B[Auth0 PKCE + OIDC]
+B --> C[Auth0 Universal Login]
+C --> D[ID Token + Access Token]
+D --> E[Backend API<br>(AWS Lambda / API Gateway)]
+E --> F[jwtVerify via Auth0 JWKS (RS256)]
+F --> G[Protected Data Returned to UI]
 
 
 ---
