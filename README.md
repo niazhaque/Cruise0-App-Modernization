@@ -20,7 +20,7 @@ This project demonstrates a modern Single-Page Application (SPA) built with Reac
 https://dss3jdxg4usbj.cloudfront.net
 
 ## Architecture (Mermaid Diagram)
-
+```mermaid
 graph TD
     subgraph Client/Frontend
         A[React SPA<br>(CloudFront / localhost)]
@@ -56,6 +56,9 @@ graph TD
     %% 5. Data Return
     E --> C;
     C --> A;
+
+---
+
 
 ## Quick Start — Local Run
 
