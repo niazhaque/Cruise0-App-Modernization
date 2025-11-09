@@ -21,7 +21,7 @@ https://dss3jdxg4usbj.cloudfront.net
 
 ## Architecture (Mermaid Diagram)
 
-```
+
 React SPA
      ↓
 Auth0 PKCE + OIDC
@@ -36,12 +36,10 @@ JWT Verify (RS256, JWKS)
      ↓
 Protected Data → UI
 
----
-
 ## Quick Start — Local Run
 
 ### 1) Backend (Protected API)
-```powershell
+powershell
 cd backend
 npm install
 npm run dev
@@ -52,6 +50,7 @@ http://localhost:4000/protected
 2) Frontend (React App)
 cd frontend
 cp .env.example .env.local
+
 # Fill ONLY VITE_AUTH0_CLIENT_ID
 npm install
 npm run dev
@@ -71,7 +70,7 @@ Frontend → S3 + CloudFront
 
 App is now globally available
 
-Auth0 Configuration Checklist
+## Auth0 Configuration Checklist
 
 | Setting       | Value                               |
 | ------------- | ----------------------------------- |
@@ -80,7 +79,7 @@ Auth0 Configuration Checklist
 | API Audience  | `https://api.cruise0`               |
 | Algorithm     | RS256                               |
 
-Allowed URLs
+## Allowed URLs
 
 | Field                 | URLs to Add                              |
 | --------------------- | ---------------------------------------- |
@@ -88,7 +87,7 @@ Allowed URLs
 | Allowed Logout URLs   | `http://localhost:5173` + https://dss3jdxg4usbj.cloudfront.net (CloudFront URL) |
 | Allowed Web Origins   | `http://localhost:5173` + https://dss3jdxg4usbj.cloudfront.net (CloudFront URL) |
 
-Auth0 Actions Used
+## Auth0 Actions Used
 
 | Action                    | Logic                                          |
 | ------------------------- | ---------------------------------------------- |
@@ -98,7 +97,7 @@ Auth0 Actions Used
 |                           | Add `country` to `user_metadata` via IP lookup |
 
 
-Feature Checks
+## Feature Checks
 
 Login with Google → No MFA
 Login with email/password → MFA required
