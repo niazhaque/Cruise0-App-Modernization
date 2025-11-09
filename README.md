@@ -21,8 +21,7 @@ https://dss3jdxg4usbj.cloudfront.net
 
 ## Architecture
 
-<img width="771" height="1041" alt="architecture flow Cruise0-App" src="https://github.com/user-attachments/assets/758db6cb-ab6c-4644-9653-4dc7fb53c27f" />
-
+<img width="461" height="1041" alt="architecture flow Cruise0-App" src="https://github.com/user-attachments/assets/57d6966c-ff03-4b25-a132-cd61fcb1b8c3" />
 
 ## Quick Start — Local Run
 
