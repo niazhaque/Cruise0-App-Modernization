@@ -90,8 +90,8 @@ https://dss3jdxg4usbj.cloudfront.net
 
 ## Feature Checks
 
-Login with Google → No MFA
-Login with email/password → MFA required
-Try login before verifying email → Login blocked
-Check user profile in Auth0 → country auto-populated
-Call protected API → Response only when email_verified = true
+Login with Google → No MFA  
+Login with email/password → MFA required  
+Try login before verifying email → Login blocked  
+Check user profile in Auth0 → country auto-populated  
+Call protected API → Response only when email_verified = true  
