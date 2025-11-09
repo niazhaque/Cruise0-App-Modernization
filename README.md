@@ -2,19 +2,7 @@
 
 This project demonstrates a modern Single-Page Application (SPA) built with React integrated with Auth0 Universal Login and several advanced security features. It serves as a proof-of-concept for modernizing user authentication and securing a backend API.
 
-Core Features - 
-
-- Universal Login
-- Email verification enforcement
-- Conditional MFA (database users only)
-- Social login with Google (no MFA required)
-- IP-based country tagging (added to user_metadata)
-- Secure API calls with RS256 JWT validation
-
-
----
-
-## Features
+## Core Features
 
 | Feature | Description |
 |--------|-------------|
@@ -92,9 +80,9 @@ Allowed URLs
 
 | Field                 | URLs to Add                              |
 | --------------------- | ---------------------------------------- |
-| Allowed Callback URLs | `http://localhost:5173` + CloudFront URL |
-| Allowed Logout URLs   | `http://localhost:5173` + CloudFront URL |
-| Allowed Web Origins   | `http://localhost:5173` + CloudFront URL |
+| Allowed Callback URLs | `http://localhost:5173` + https://dss3jdxg4usbj.cloudfront.net (CloudFront URL) |
+| Allowed Logout URLs   | `http://localhost:5173` + https://dss3jdxg4usbj.cloudfront.net (CloudFront URL) |
+| Allowed Web Origins   | `http://localhost:5173` + https://dss3jdxg4usbj.cloudfront.net (CloudFront URL) |
 
 Auth0 Actions Used
 
