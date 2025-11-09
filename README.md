@@ -19,6 +19,9 @@ This project demonstrates a modern Single-Page Application (SPA) built with Reac
 
 https://dss3jdxg4usbj.cloudfront.net
 
+<img width="757" height="619" alt="image" src="https://github.com/user-attachments/assets/397c3db3-6ca6-4cf7-8110-bfd1976c5118" />
+
+
 ## Architecture
 
 <img width="461" height="1041" alt="architecture flow Cruise0-App" src="https://github.com/user-attachments/assets/57d6966c-ff03-4b25-a132-cd61fcb1b8c3" />
