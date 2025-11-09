@@ -21,24 +21,45 @@ https://dss3jdxg4usbj.cloudfront.net
 
 ## Architecture (Mermaid Diagram)
 
+graph TD
+    subgraph Client/Frontend
+        A[React SPA<br>(CloudFront / localhost)]
+    end
 
-React SPA
-     ↓
-Auth0 PKCE + OIDC
-     ↓
-Auth0 Universal Login
-     ↓
-ID Token + Access Token
-     ↓
-Backend API (Lambda or Express)
-     ↓
-JWT Verify (RS256, JWKS)
-     ↓
-Protected Data → UI
+    subgraph Authentication
+        B(Auth0 Universal Login)
+    end
+
+    subgraph Backend/API
+        C[Backend API<br>(Local Express or AWS Lambda)]
+        D[JWT Verification via Auth0 JWKS]
+    end
+
+    subgraph Data
+        E[Protected Data / Logic]
+    end
+    
+    %% 1. PKCE/OIDC Flow Initiation
+    A -->|Auth0 PKCE + OIDC| B;
+    
+    %% 2. Token Return
+    B -->|ID Token + Access Token| A;
+    
+    %% 3. API Call with Token
+    A -->|Bearer Access Token| C;
+    
+    %% 4. Authorization Check
+    C -->|jwtVerify (RS256)| D;
+    D -->|Valid Token| E;
+    D -->|Invalid Token| C{401 Unauthorized};
+    
+    %% 5. Data Return
+    E --> C;
+    C --> A;
 
 ## Quick Start — Local Run
 
-### 1) Backend (Protected API)
+## 1) Backend (Protected API)
 powershell
 cd backend
 npm install
@@ -47,7 +68,7 @@ npm run dev
 API now live:
 http://localhost:4000/protected  
 
-2) Frontend (React App)
+## 2) Frontend (React App)
 cd frontend
 cp .env.example .env.local
 
@@ -68,7 +89,8 @@ VITE_API_BASE_URL=<YOUR_API_URL>
 
 Frontend → S3 + CloudFront
 
-App is now globally available
+## App is now globally available
+https://dss3jdxg4usbj.cloudfront.net
 
 ## Auth0 Configuration Checklist
 
