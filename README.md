@@ -65,8 +65,8 @@ https://dss3jdxg4usbj.cloudfront.net
 
 | Setting       | Value                               |
 | ------------- | ----------------------------------- |
-| Domain        | `dev-oo2oo6jk421zx72b.us.auth0.com` |
-| SPA Client ID | `BXHDNDjk2kuKkIkxf84OWcDoXCgdAKql`  |
+| Auth0 Tenant  | `dev-oo2oo6jk421zx72b.us.auth0.com` |
+| Client ID     | `BXHDNDjk2kuKkIkxf84OWcDoXCgdAKql`  |
 | API Audience  | `https://api.cruise0`               |
 | Algorithm     | RS256                               |
 
