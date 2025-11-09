@@ -1,6 +1,6 @@
 # Cruise0-App Modernization (React & Auth0)
 
-This project demonstrates a modern Single-Page Application (SPA) built with React integrated with Auth0 Universal Login and several advanced security features. It serves as a proof-of-concept for modernizing user authentication and securing a backend API.
+This project demonstrates a modern Single-Page Application (SPA) built with React, integrated with Auth0 Universal Login, and featuring several advanced security features. It serves as a proof-of-concept for modernizing user authentication and securing a backend API.
 
 ## Core Features
 
@@ -19,8 +19,8 @@ This project demonstrates a modern Single-Page Application (SPA) built with Reac
 
 https://dss3jdxg4usbj.cloudfront.net
 
-## Architecture (Mermaid Diagram)
----
+## Architecture
+
 ```mermaid
 graph TD
 subgraph Client/Frontend
@@ -58,7 +58,7 @@ D -->|Invalid Token| C{401 Unauthorized};
 E --> C;
 C --> A;
 ---
----
+
 ## Quick Start — Local Run
 
 ## 1) Backend (Protected API)
