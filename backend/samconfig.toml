@@ -1,0 +1,14 @@
+version = 0.1
+
+[default.deploy.parameters]
+stack_name = "cruise0-backend"
+resolve_s3 = true
+s3_prefix = "cruise0-backend"
+region = "ca-central-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = "Auth0Issuer=\"https://dev-oo2oo6jk421zx72b.us.auth0.com/\" Auth0Audience=\"https://api.cruise0\""
+image_repositories = []
+
+[default.global.parameters]
+region = "ca-central-1"

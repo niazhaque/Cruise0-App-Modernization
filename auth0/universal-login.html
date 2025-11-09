@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Cruise0 Login</title>
+  <style>
+    body {
+      margin:0; min-height:100vh;
+      background: linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)), url('https://cruise0-frontend.s3.ca-central-1.amazonaws.com/cruise-bg.png') center/cover no-repeat fixed;
+      display:flex; align-items:center; justify-content:center; font-family: system-ui, -apple-system, Segoe UI, Roboto;
+    }
+    .box { width: 360px; background: rgba(255,255,255,.9); border-radius: 16px; padding: 24px; text-align:center; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+    img.logo { height: 48px; margin-bottom: 10px; }
+    h1 { margin: 8px 0 4px; font-size: 24px; }
+    p { margin: 0 0 16px; color: #334155; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <img class="logo" src="https://cruise0-frontend-new.s3.amazonaws.com/cruise-logo.png" alt="Cruise Ship"/>
+    <h1><b>Welcome Aboard.</b></h1>
+    <p>Log in to book your travel with <b>Cruise0</b>.</p>
+    <div id="auth0-lock-container"></div>
+  </div>
+</body>
+</html>

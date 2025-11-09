@@ -1,0 +1,56 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Cruise0 Backend API (Node.js + Auth0 JWT Validation)
+
+Globals:
+  Function:
+    Runtime: nodejs20.x
+    Timeout: 10
+    MemorySize: 256
+    Architectures:
+      - x86_64
+
+Parameters:
+  Auth0Issuer:
+    Type: String
+    Default: "https://dev-oo2oo6jk421zx72b.us.auth0.com/"
+  Auth0Audience:
+    Type: String
+    Default: "https://api.cruise0"
+
+Resources:
+
+  ApiGateway:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      CorsConfiguration:
+        AllowOrigins:
+          - "*"
+        AllowHeaders:
+          - Authorization
+          - Content-Type
+        AllowMethods:
+          - GET
+          - OPTIONS
+
+  ProtectedFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: dist/lambda.handler        # ✅ Matches your actual compiled output
+      CodeUri: ./                         # ✅ Use project root as source
+      Events:
+        ProtectedEndpoint:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref ApiGateway
+            Path: /protected
+            Method: GET
+      Environment:
+        Variables:
+          AUTH0_ISSUER: !Ref Auth0Issuer
+          AUTH0_AUDIENCE: !Ref Auth0Audience
+
+Outputs:
+  ApiUrl:
+    Description: Invoke URL for your API
+    Value: !Sub "https://${ApiGateway}.execute-api.${AWS::Region}.amazonaws.com"
