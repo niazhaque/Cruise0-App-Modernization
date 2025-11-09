@@ -15,7 +15,7 @@ This project demonstrates a modern Single-Page Application (SPA) built with Reac
 | **Protected Node API** | JWT validation + checks `email_verified === true` |
 
 ---
-## Cloudfront URL to access the Cruis0 Application - 
+## Cloudfront URL to access the Cruise0 Application - 
 
 https://dss3jdxg4usbj.cloudfront.net
 
