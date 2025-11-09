@@ -22,16 +22,21 @@ https://dss3jdxg4usbj.cloudfront.net
 ## 🖥️ Architecture (Mermaid Diagram)
 
 ```
-mermaid
 flowchart TD
+  A[React SPA<br/>(CloudFront / localhost)]
+  B[Auth0 PKCE + OIDC]
+  C[Auth0 Universal Login]
+  D[ID Token + Access Token]
+  E[Backend API<br/>(Local Express or AWS Lambda)]
+  F[jwtVerify via Auth0 JWKS (RS256)]
+  G[Protected Data → UI]
 
-A[React SPA<br>(CloudFront / Localhost)] --> B[Auth0 PKCE + OIDC]
-B --> C[Auth0 Universal Login]
-C --> D[ID Token + Access Token]
-D --> E[Backend API<br>(AWS Lambda / API Gateway)]
-E --> F[jwtVerify via Auth0 JWKS (RS256)]
-F --> G[Protected Data Returned to UI]
-
+  A --> B
+  B --> C
+  C --> D
+  D --> E
+  E --> F
+  F --> G
 
 ---
 
