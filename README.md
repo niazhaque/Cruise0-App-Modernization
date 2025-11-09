@@ -20,45 +20,44 @@ This project demonstrates a modern Single-Page Application (SPA) built with Reac
 https://dss3jdxg4usbj.cloudfront.net
 
 ## Architecture (Mermaid Diagram)
+
 ```mermaid
 graph TD
-    subgraph Client/Frontend
-        A[React SPA<br>(CloudFront / localhost)]
-    end
+subgraph Client/Frontend
+A[React SPA<br>(CloudFront / localhost)]
+end
 
-    subgraph Authentication
-        B(Auth0 Universal Login)
-    end
+subgraph Authentication
+B(Auth0 Universal Login)
+end
 
-    subgraph Backend/API
-        C[Backend API<br>(Local Express or AWS Lambda)]
-        D[JWT Verification via Auth0 JWKS]
-    end
+subgraph Backend/API
+C[Backend API<br>(Local Express or AWS Lambda)]
+D[JWT Verification via Auth0 JWKS]
+end
 
-    subgraph Data
-        E[Protected Data / Logic]
-    end
-    
-    %% 1. PKCE/OIDC Flow Initiation
-    A -->|Auth0 PKCE + OIDC| B;
-    
-    %% 2. Token Return
-    B -->|ID Token + Access Token| A;
-    
-    %% 3. API Call with Token
-    A -->|Bearer Access Token| C;
-    
-    %% 4. Authorization Check
-    C -->|jwtVerify (RS256)| D;
-    D -->|Valid Token| E;
-    D -->|Invalid Token| C{401 Unauthorized};
-    
-    %% 5. Data Return
-    E --> C;
-    C --> A;
-
+subgraph Data
+E[Protected Data / Logic]
+end
+ 
+%% 1. PKCE/OIDC Flow Initiation
+A -->|Auth0 PKCE + OIDC| B;
+ 
+%% 2. Token Return
+B -->|ID Token + Access Token| A;
+ 
+%% 3. API Call with Token
+A -->|Bearer Access Token| C;
+ 
+%% 4. Authorization Check
+C -->|jwtVerify (RS256)| D;
+D -->|Valid Token| E;
+D -->|Invalid Token| C{401 Unauthorized};
+ 
+%% 5. Data Return
+E --> C;
+C --> A;
 ---
-
 
 ## Quick Start — Local Run
 
