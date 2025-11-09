@@ -20,7 +20,7 @@ This project demonstrates a modern Single-Page Application (SPA) built with Reac
 https://dss3jdxg4usbj.cloudfront.net
 
 ## Architecture (Mermaid Diagram)
-
+---
 ```mermaid
 graph TD
 subgraph Client/Frontend
@@ -58,7 +58,7 @@ D -->|Invalid Token| C{401 Unauthorized};
 E --> C;
 C --> A;
 ---
-
+---
 ## Quick Start — Local Run
 
 ## 1) Backend (Protected API)
