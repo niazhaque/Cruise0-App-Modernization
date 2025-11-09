@@ -41,7 +41,7 @@ http://localhost:4000/protected
 cd frontend
 cp .env.example .env.local
 
-# Fill ONLY VITE_AUTH0_CLIENT_ID
+## Fill ONLY VITE_AUTH0_CLIENT_ID
 npm install
 npm run dev
 
