@@ -22,41 +22,17 @@ https://dss3jdxg4usbj.cloudfront.net
 ## Architecture
 
 ```mermaid
-graph TD
-subgraph Client/Frontend
-A[React SPA<br>(CloudFront / localhost)]
-end
+flowchart TD
+  A["React SPA<br/>(CloudFront or Localhost)"]
+  B["Auth0 PKCE + OIDC"]
+  C["Auth0 Universal Login"]
+  D["ID Token + Access Token"]
+  E["Backend API<br/>(Local Express or AWS Lambda)"]
+  F["jwtVerify via Auth0 JWKS (RS256)"]
+  G["Protected Data → UI"]
 
-subgraph Authentication
-B(Auth0 Universal Login)
-end
+  A --> B --> C --> D --> E --> F --> G
 
-subgraph Backend/API
-C[Backend API<br>(Local Express or AWS Lambda)]
-D[JWT Verification via Auth0 JWKS]
-end
-
-subgraph Data
-E[Protected Data / Logic]
-end
- 
-%% 1. PKCE/OIDC Flow Initiation
-A -->|Auth0 PKCE + OIDC| B;
- 
-%% 2. Token Return
-B -->|ID Token + Access Token| A;
- 
-%% 3. API Call with Token
-A -->|Bearer Access Token| C;
- 
-%% 4. Authorization Check
-C -->|jwtVerify (RS256)| D;
-D -->|Valid Token| E;
-D -->|Invalid Token| C{401 Unauthorized};
- 
-%% 5. Data Return
-E --> C;
-C --> A;
 ---
 
 ## Quick Start — Local Run
